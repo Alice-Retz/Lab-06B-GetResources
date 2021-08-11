@@ -22,9 +22,9 @@ async function run() {
                     id SERIAL PRIMARY KEY NOT NULL,
                     name VARCHAR(512) NOT NULL,
                     building VARCHAR(512) NOT NULL,
-                    bought VARCHAR(512) NOT NULL,
+                    bought BOOL NOT NULL,
                     days_to_maturity INTEGER NOT NULL,
-                    produces VARCHAR(512) NOT NULL,
+                    produces VARCHAR(512) NOT NULL
             );
         `);
 
