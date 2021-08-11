@@ -11,17 +11,20 @@ async function run() {
     await client.connect();
 
     // run a query to create tables
+    // move the following under query later
+    // CREATE TABLE users (
+    //     id SERIAL PRIMARY KEY,
+    //     email VARCHAR(256) NOT NULL,
+    //     hash VARCHAR(512) NOT NULL
+    // );           
     await client.query(`
-                CREATE TABLE users (
-                    id SERIAL PRIMARY KEY,
-                    email VARCHAR(256) NOT NULL,
-                    hash VARCHAR(512) NOT NULL
-                );           
                 CREATE TABLE animals (
                     id SERIAL PRIMARY KEY NOT NULL,
                     name VARCHAR(512) NOT NULL,
-                    cool_factor INTEGER NOT NULL,
-                    owner_id INTEGER NOT NULL REFERENCES users(id)
+                    building VARCHAR(512) NOT NULL,
+                    bought VARCHAR(512) NOT NULL,
+                    days_to_maturity INTEGER NOT NULL,
+                    produces VARCHAR(512) NOT NULL,
             );
         `);
 

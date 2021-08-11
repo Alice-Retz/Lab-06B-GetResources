@@ -11,7 +11,7 @@ async function run() {
   try {
     await client.connect();
 
-    const users = await Promise.all(
+    await Promise.all(
       usersData.map(user => {
         return client.query(`
                       INSERT INTO users (email, hash)
@@ -22,15 +22,14 @@ async function run() {
       })
     );
       
-    const user = users[0].rows[0];
 
     await Promise.all(
       animals.map(animal => {
         return client.query(`
-                    INSERT INTO animals (name, cool_factor, owner_id)
-                    VALUES ($1, $2, $3);
+                    INSERT INTO animals (name, building, bought, days_to_maturity, produces)
+                    VALUES ($1, $2, $3, $4, $5);
                 `,
-        [animal.name, animal.cool_factor, user.id]);
+        [animal.name, animal.building, animal.bought, animal.days_to_maturity, animal.produces]);
       })
     );
     
