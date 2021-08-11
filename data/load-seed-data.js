@@ -11,16 +11,16 @@ async function run() {
   try {
     await client.connect();
 
-    await Promise.all(
-      usersData.map(user => {
-        return client.query(`
-                      INSERT INTO users (email, hash)
-                      VALUES ($1, $2)
-                      RETURNING *;
-                  `,
-        [user.email, user.hash]);
-      })
-    );
+    // await Promise.all(
+    //   usersData.map(user => {
+    //     return client.query(`
+    //                   INSERT INTO users (email, hash)
+    //                   VALUES ($1, $2)
+    //                   RETURNING *;
+    //               `,
+    //     [user.email, user.hash]);
+    //   })
+    // );
       
 
     await Promise.all(

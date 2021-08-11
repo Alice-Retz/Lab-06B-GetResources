@@ -24,7 +24,7 @@ module.exports = [
     name: 'dinosaur',
     building: 'coop',
     bought: false,
-    days_to_maturity: 12.5,
+    days_to_maturity: 12,
     produces: 'egg', 
   },
   {
