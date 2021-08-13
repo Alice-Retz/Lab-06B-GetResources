@@ -97,5 +97,49 @@ describe('app routes', () => {
       expect(data.body.produces).toEqual(updatedData.produces);
   
     });
+
+    test('POST /animals/:id creates a new animal', async ()=>{
+
+      const newAnimal = {
+        name: 'dog',
+        building: 'farmhouse',
+        bought: false,
+        days_to_maturity: 0,
+        produces: 'love',
+      };
+
+      const data = await fakeRequest(app)
+        .post('/animals/1')
+        .send(newAnimal)
+        .expect(200)
+        .expect('Content-Type', /json/);
+        
+      expect(data.body.name).toEqual(newAnimal.name);
+      expect(data.body.id).toBeGreaterThan(0);
+
+    });
+    
+    test('DELETE /animals/:id deletes animal', async ()=>{
+      
+      const deletedObject = {
+        name: 'dog',
+        building: 'farmhouse',
+        bought: false,
+        days_to_maturity: 0,
+        produces: 'love',
+      };
+      
+      await fakeRequest(app)
+        .post('/animals')
+        .send(deletedObject)
+        .expect('Content-Type', /json/);
+
+      const data = await fakeRequest(app)
+        .delete('/animals/10')
+        .expect(200)
+        .expect('Content-Type', /json/);
+      
+      expect(data.body).toEqual({ ...deletedObject, id:10 });
+    }); 
   });
 });
