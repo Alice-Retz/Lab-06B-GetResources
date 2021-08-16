@@ -1,5 +1,6 @@
 module.exports = [
   { name: 'coop' },
   { name: 'barn' },
-  { name: 'pond' }
+  { name: 'pond' },
+  { name: 'farmhouse' }
 ];

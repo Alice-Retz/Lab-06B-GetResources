@@ -1,7 +1,7 @@
 const client = require('../lib/client');
 // import our seed data:
 const animals = require('./animals.js');
-const buildingsData = require('/buildings.js');
+const buildingsData = require('./buildings.js');
 const { getEmoji } = require('../lib/emoji.js');
 
 run();
@@ -35,7 +35,7 @@ async function run() {
                     VALUES ($1, $2, $3, $4, $5);
                 `,
         [animal.name, 
-          animal.building, 
+          animal.building_id, 
           animal.bought, 
           animal.days_to_maturity, 
           animal.produces]);
