@@ -31,23 +31,38 @@ describe('app routes', () => {
 
     test('GET returns animals', async ()=> {
 
-      const expectation = animalData.map(animals => animals.building);
+      const expectation = animalData.map(animals => animals.name);
+      const expectedShape = {
+        id: 1,
+        name: 'chicken',
+        building_id: 1,
+        bought: true,
+        days_to_maturity: 3,
+        produces: 'egg',
+      };
 
       const data = await fakeRequest(app)
         .get('/animals')
         .expect('Content-Type', /json/)
         .expect(200);
 
-      const building = data.body.map(animals => animals.building);
+      const names = data.body.map(animals => animals.name);
       
-      expect(building).toEqual(expectation);
-      expect(building.length).toEqual(animalData.length);
-    });
+      expect(names).toEqual(expectation);
+      expect(names.length).toEqual(animalData.length);
+      expect(data.body[0]).toEqual(expectedShape);
+    }, 10000);
       
     test('GET /animals/:id returns individual animal', async ()=> {
 
-      const expectation = animalData[0];
-      expectation.id = 1;
+      const expectation = {
+        id: 1,
+        name: 'chicken',
+        building_id: 1,
+        bought: true,
+        days_to_maturity: 3,
+        produces: 'egg',
+      };
 
       const data = await fakeRequest(app)
         .get('/animals/1')
@@ -62,7 +77,7 @@ describe('app routes', () => {
 
       const newAnimal = {
         name: 'dog',
-        building: 'farmhouse',
+        building_id: 4,
         bought: false,
         days_to_maturity: 0,
         produces: 'love',
@@ -82,7 +97,7 @@ describe('app routes', () => {
     test('PUT /animals/:id updates animals', async ()=>{
       const updatedData =   {
         name: 'duck',
-        building: 'pond',
+        building_id: 1,
         bought: true,
         days_to_maturity: 5,
         produces: 'duck feather',
@@ -102,7 +117,7 @@ describe('app routes', () => {
 
       const newAnimal = {
         name: 'dog',
-        building: 'farmhouse',
+        building_id: 4,
         bought: false,
         days_to_maturity: 0,
         produces: 'love',
@@ -123,7 +138,7 @@ describe('app routes', () => {
       
       const deletedObject = {
         name: 'dog',
-        building: 'farmhouse',
+        building_id: 4,
         bought: false,
         days_to_maturity: 0,
         produces: 'love',
