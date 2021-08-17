@@ -28,7 +28,7 @@ async function run() {
         return client.query(`
                     INSERT INTO animals (
                       name, 
-                      color,
+                      colors,
                       building_id, 
                       bought, 
                       days_to_maturity, 

@@ -29,7 +29,7 @@ module.exports = [
   {
     name: 'duck',
     colors: 1,
-    building_id: 3,
+    building_id: 1,
     bought: true,
     days_to_maturity: 5,
     produces: 'egg',

@@ -32,7 +32,7 @@ async function run() {
                     bought BOOL NOT NULL,
                     days_to_maturity INTEGER NOT NULL,
                     produces VARCHAR(512) NOT NULL,
-                    img TEXT NOT NULL,
+                    img TEXT NOT NULL
             );
         `);
 
