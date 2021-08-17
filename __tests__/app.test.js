@@ -150,11 +150,11 @@ describe('app routes', () => {
         .expect('Content-Type', /json/);
 
       const data = await fakeRequest(app)
-        .delete('/animals/10')
+        .delete('/animals/12')
         .expect(200)
         .expect('Content-Type', /json/);
       
-      expect(data.body).toEqual({ ...deletedObject, id:10 });
+      expect(data.body).toEqual({ ...deletedObject, id:12 });
     }); 
   });
 });
