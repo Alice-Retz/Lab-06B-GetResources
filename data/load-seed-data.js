@@ -28,17 +28,21 @@ async function run() {
         return client.query(`
                     INSERT INTO animals (
                       name, 
+                      color,
                       building_id, 
                       bought, 
                       days_to_maturity, 
-                      produces)
-                    VALUES ($1, $2, $3, $4, $5);
+                      produces,
+                      img)
+                    VALUES ($1, $2, $3, $4, $5, $6, $7);
                 `,
         [animal.name, 
+          animal.colors,
           animal.building_id, 
           animal.bought, 
           animal.days_to_maturity, 
-          animal.produces]);
+          animal.produces,
+          animal.img]);
       })
     );
     

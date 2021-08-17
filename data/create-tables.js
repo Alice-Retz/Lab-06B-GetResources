@@ -26,11 +26,13 @@ async function run() {
 
                 CREATE TABLE animals (
                     id SERIAL PRIMARY KEY NOT NULL,
+                    colors INTEGER NOT NULL,
                     name VARCHAR(512) NOT NULL,
                     building_id INTEGER NOT NULL REFERENCES buildings(id),
                     bought BOOL NOT NULL,
                     days_to_maturity INTEGER NOT NULL,
-                    produces VARCHAR(512) NOT NULL
+                    produces VARCHAR(512) NOT NULL,
+                    img TEXT NOT NULL,
             );
         `);
 
